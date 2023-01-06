@@ -1,6 +1,6 @@
 .openClosedSwitch {
-  padding: 1.5rem 2ch; 
-  opacity: 0.75; 
+  padding: 1.5rem 2ch;
+  opacity: 0.75;
   min-width: 10ch;
   cursor: pointer;
   transition: all 0.25s 0s ease-in-out;
@@ -27,7 +27,7 @@
 }
 
 .bubble:hover {
-  box-shadow: -8px 10px 12px 4px rgba(0, 0, 0, 0.18);  
+  box-shadow: -8px 10px 12px 4px rgba(0, 0, 0, 0.18);
   transform: scale(1.01);
 }
 
@@ -45,7 +45,7 @@
   opacity: 0.5;
 }
 
-.title {  
+.title {
   flex-grow: 0;
   margin: 1.5rem;
   transform: translate(0, 2px);
@@ -77,10 +77,10 @@
 .bubbleContent {
   max-height: 0px;
   transition: max-height 0.5s 0s ease;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 .open .bubbleContent {
-  height: fit-content;    
+  height: fit-content;
   max-height: 500px;
 }

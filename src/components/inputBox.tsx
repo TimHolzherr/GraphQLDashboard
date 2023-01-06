@@ -1,5 +1,5 @@
-import { ComplexInput, InputType } from "./inputType";
-import styles from "./inputType.module.css";
+import { ComplexInput, InputType } from './inputType';
+import styles from './inputType.module.css';
 
 type Props = {
   input: InputType | null;
@@ -8,7 +8,7 @@ type Props = {
 
 function calculateLabelLength(input: ComplexInput) {
   return Math.max(
-    ...input.fields.filter((f) => !("fields" in f)).map((f) => f.name.length)
+    ...input.fields.filter((f) => !('fields' in f)).map((f) => f.name.length)
   );
 }
 
@@ -16,7 +16,8 @@ export default function InputBox({ input, labelLength }: Props) {
   if (!input) {
     return null;
   }
-  if ("fields" in input) { // ComplexInput
+  if ('fields' in input) {
+    // ComplexInput
     let labelLength = calculateLabelLength(input);
     return (
       <div className={styles.complexType}>
@@ -26,7 +27,8 @@ export default function InputBox({ input, labelLength }: Props) {
         ))}
       </div>
     );
-  } else { // ScalarInput
+  } else {
+    // ScalarInput
     return (
       <div className={styles.scalarType}>
         <div

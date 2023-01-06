@@ -1,10 +1,10 @@
-import { GraphQLArgument } from "graphql";
-import { Maybe } from "graphql/jsutils/Maybe";
-import { useState } from "react";
-import CaretDown from "../assets/caretDown";
-import styles from "./commandBubble.module.css";
-import InputBox from "./inputBox";
-import { argumentsToInputType } from "./inputType";
+import { GraphQLArgument } from 'graphql';
+import { Maybe } from 'graphql/jsutils/Maybe';
+import { useState } from 'react';
+import CaretDown from '../assets/caretDown';
+import styles from './commandBubble.module.css';
+import InputBox from './inputBox';
+import { argumentsToInputType } from './inputType';
 
 type Props = {
   title: string;
@@ -17,12 +17,12 @@ export default function CommandBubble({
   title,
   titleWidthInCh,
   description,
-  input
+  input,
 }: Props) {
   let [isOpen, toggleOpen] = useState(false);
   return (
-    <div className={`${styles.bubble} ${isOpen ? styles.open : ""}`}>
-      <div className={styles.header} onClick={() => toggleOpen(o => !o)}>
+    <div className={`${styles.bubble} ${isOpen ? styles.open : ''}`}>
+      <div className={styles.header} onClick={() => toggleOpen((o) => !o)}>
         <div
           className={styles.title}
           style={{ minWidth: `${titleWidthInCh}ch` }}
