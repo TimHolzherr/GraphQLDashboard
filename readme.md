@@ -13,3 +13,8 @@ A form for entering the input for these operations is generated dynamically base
 
 
 A HotChocolate example backend is provided under `examples/simpleBackend` and can be started with `cd examples/simpleBackend && dotnet run .`
+
+## Work in progress
+Current Status:
+
+<img width="510" alt="image" src="https://user-images.githubusercontent.com/11144100/211058288-aee1d56d-ed94-4d6f-a03e-5696a7a1d8b1.png">
