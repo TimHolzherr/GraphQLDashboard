@@ -1,42 +1,64 @@
-import { GraphQLArgument, GraphQLInputObjectType, GraphQLNonNull, GraphQLScalarType } from "graphql";
+import {
+  GraphQLArgument,
+  GraphQLInputObjectType,
+  GraphQLList,
+  GraphQLNonNull,
+  GraphQLScalarType,
+} from 'graphql';
 
 interface ScalarInput {
-    name: string;
+  name: string;
 }
 
 interface ComplexInput {
-    name: string;
-    fields: InputType[]
+  name: string;
+  fields: InputType[];
 }
 
-
-type InputType = ScalarInput | ComplexInput;
-
-function argumentToInputType(arg: GraphQLArgument): InputType {    
-    let type = arg.type;
-
-    if (type instanceof GraphQLNonNull) {
-        type = type.ofType;
-    }
-    
-    if (type instanceof GraphQLScalarType) {
-        return {name: arg.name}
-    }
-    if (type instanceof GraphQLInputObjectType) {
-        return {name: arg.name, fields: Object.values(type.getFields()).map(f => argumentToInputType(f))}
-    }
-    throw new Error("unexpected type");    
+interface ListInput {
+  name: string;
+  fields: InputType[];
 }
 
-function argumentsToInputType(args: readonly GraphQLArgument[]): InputType | null {
-    if (args.length == 0) {
-        return null;
-    }
-    if (args.length > 1) {
-        return {name: "input", fields: args.map(a => argumentToInputType(a))}
-    }    
-    return argumentToInputType(args[0]);
+type InputType = ScalarInput | ComplexInput | ListInput;
+
+function argumentToInputType(arg: GraphQLArgument): InputType {
+  let type = arg.type;
+  if (type instanceof GraphQLNonNull) {
+    type = type.ofType;
+  }
+
+  if (type instanceof GraphQLScalarType) {
+    return { name: arg.name };
+  }
+  if (type instanceof GraphQLInputObjectType) {
+    return {
+      name: arg.name,
+      fields: Object.values(type.getFields()).map((f) =>
+        argumentToInputType(f)
+      ),
+    };
+  }
+  if (type instanceof GraphQLList) {
+    return { name: arg.name };
+  }
+  throw new Error('unexpected type');
 }
 
-export type {InputType, ComplexInput};
-export {argumentsToInputType};
+function argumentsToInputType(
+  args: readonly GraphQLArgument[]
+): InputType | null {
+  if (args.length == 0) {
+    return null;
+  }
+  if (args.length > 1) {
+    return {
+      name: 'input',
+      fields: args.map((a) => argumentToInputType(a)),
+    };
+  }
+  return argumentToInputType(args[0]);
+}
+
+export type { InputType, ComplexInput };
+export { argumentsToInputType };

@@ -15,7 +15,7 @@ function CaretDown(props: any) {
         fill="#000"
       />
     </svg>
-  )
+  );
 }
 
-export default CaretDown
+export default CaretDown;

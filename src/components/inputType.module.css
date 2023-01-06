@@ -1,45 +1,45 @@
 .complexType {
-    margin: 16px;
-    padding: 8px;
-    border: 3px dashed  hsl(240  100%  50% / 0.6);
-    border-radius: 0.5rem;
-    width: fit-content;
-    position: relative;
-  }
-  
-  .complexTypeName {
-    background-color: hsl(0 0% 100% / 1);
-    width: fit-content;
-    font-size: 80%;
-    font-weight: 600;
-    color: hsl(240  100%  50% / 1);
-    padding: 0.25em 0.25em 0 0.25em;
-    border-radius: 2em;
-    position: absolute;
-    top: -14px;  
-  }
-  
-  .scalarType {
-    display: flex;
-    margin-top: 8px;
-  }
-  
-  .labelContainer {
-    margin-right: 16px;  
-  }
-  
-  .input, .label {
-    display: block;        
-  }
-  
-  .input {
-    width: 25ch;    
-    font-size: 80%;
-    padding-left: 8px;
-    padding-right: 8px;
+  margin: 16px;
+  padding: 8px;
+  border: 3px dashed hsl(240 100% 50% / 0.6);
+  border-radius: 0.5rem;
+  width: fit-content;
+  position: relative;
+}
 
-  }
-  
-  .complexType .complexType {
-    margin-bottom: 8px;
-  }
+.complexTypeName {
+  background-color: hsl(0 0% 100% / 1);
+  width: fit-content;
+  font-size: 80%;
+  font-weight: 600;
+  color: hsl(240 100% 50% / 1);
+  padding: 0.25em 0.25em 0 0.25em;
+  border-radius: 2em;
+  position: absolute;
+  top: -14px;
+}
+
+.scalarType {
+  display: flex;
+  margin-top: 8px;
+}
+
+.labelContainer {
+  margin-right: 16px;
+}
+
+.input,
+.label {
+  display: block;
+}
+
+.input {
+  width: 25ch;
+  font-size: 80%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.complexType .complexType {
+  margin-bottom: 8px;
+}

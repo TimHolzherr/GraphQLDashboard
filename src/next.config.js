@@ -2,11 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   rewrites: () => {
-    return [{
-      source: "/graphql",
-      destination: "http://localhost:54321/graphql"
-    }]
-  }
-}
+    return [
+      {
+        source: '/graphql',
+        destination: 'http://localhost:5252/graphql',
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
