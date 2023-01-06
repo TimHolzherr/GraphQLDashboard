@@ -2,6 +2,7 @@ using HotChocolate.AspNetCore.Authorization;
 
 public class Mutation
 {    
+     [GraphQLDescription("Adds an author to the database")]
     public async Task<AuthorPayload> AddAuthor(AuthorInput input, [Service] Repository repository)
     {
         var author = new Author(Guid.NewGuid(), input.Name);
@@ -9,6 +10,7 @@ public class Mutation
         return new AuthorPayload(author);
     }
 
+    [GraphQLDescription("Assosiates a new book with a given author")]
     public async Task<BookPayload> AddBook(BookInput input, [Service] Repository repository)
     {
         var author = await repository.GetAuthor(input.Author) ??
@@ -18,7 +20,12 @@ public class Mutation
         return new BookPayload(book);
     }
 
-    public Task<string> AddLibrary(string name, string? description) 
+    [GraphQLDescription("Adds a Library")]
+    public Task<string> AddLibrary(
+        [GraphQLDescription("The name of the library")]
+        string name, 
+        [GraphQLDescription("The description of the library")]
+        string? description) 
     {
         return Task.FromResult("foo");
     }

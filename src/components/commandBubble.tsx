@@ -1,5 +1,7 @@
-import { GraphQLArgument, astFromValue, GraphQLScalarType, GraphQLInputObjectType, GraphQLNonNull, GraphQLInputType } from "graphql";
+import { GraphQLArgument } from "graphql";
 import { Maybe } from "graphql/jsutils/Maybe";
+import { useState } from "react";
+import CaretDown from "../assets/caretDown";
 import styles from "./commandBubble.module.css";
 import InputBox from "./inputBox";
 import { argumentsToInputType } from "./inputType";
@@ -16,10 +18,11 @@ export default function CommandBubble({
   titleWidthInCh,
   description,
   input
-}: Props) {      
+}: Props) {
+  let [isOpen, toggleOpen] = useState(false);
   return (
-    <div className={styles.bubble}>
-      <div className={styles.header}>
+    <div className={`${styles.bubble} ${isOpen ? styles.open : ""}`}>
+      <div className={styles.header} onClick={() => toggleOpen(o => !o)}>
         <div
           className={styles.title}
           style={{ minWidth: `${titleWidthInCh}ch` }}
@@ -29,7 +32,9 @@ export default function CommandBubble({
         <div className={styles.divider}></div>
         <div className={styles.description}>{description}</div>
         <div className={styles.divider}> </div>
-        <div className={styles.openClosedSwitch}>&#5167;</div>
+        <div className={styles.openClosedSwitch}>
+          <CaretDown></CaretDown>
+        </div>
       </div>
       <div className={styles.verticalDivider}></div>
       <div className={styles.bubbleContent}>
